@@ -16,6 +16,7 @@ func main() {
 	// TODO: IMPLEMENT routers.DELETE
 	// NOTE: routers.GET Works fine but find out why DELETE Doesn't work
 	router.GET("/user/delete/:name", main_server.DeleteUser())
+	router.POST("/user/update/:name", main_server.UpdateUser())
 
 	log.Fatal(router.Run(":8080"))
 }

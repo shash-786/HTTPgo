@@ -1,0 +1,6 @@
+curl -H 'Content-Type: application/json' -v http://localhost:8080/user/create -d '{"name":"Shashank", "email":"ok@yahoo.com", "age":21}'
+curl -v http://localhost:8080/user/search/Shashank
+curl -H 'Content-Type: application/json' -v http://localhost:8080/user/update/Shashank -d '{"email":"ok@gmail.com", "age":22}'
+curl -v http://localhost:8080/user/search/Shashank
+curl -v http://localhost:8080/user/delete/Shashank
+curl -v http://localhost:8080/user/search/Shashank
