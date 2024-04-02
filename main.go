@@ -12,6 +12,7 @@ func main() {
 	main_server := server.New()
 	//DEFINE ROUTES
 	router.POST("/user/create", main_server.CreateUser())
+	router.GET("/user/search/:name", main_server.SearchUser())
 
 	log.Fatal(router.Run(":8080"))
 }
