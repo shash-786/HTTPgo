@@ -96,3 +96,27 @@ func (s *Server) SearchUser() gin.HandlerFunc {
 		c.IndentedJSON(http.StatusOK, json_ret)
 	}
 }
+
+func (s *Server) DeleteUser() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		var input_name string
+		if input_name = c.Param("name"); input_name == "" {
+			log.Printf("DeleteUser : Could not read name")
+			c.IndentedJSON(http.StatusUnsupportedMediaType, gin.H{
+				"error": "Name Query Not Found!",
+			})
+			return
+		}
+
+		_, ok := s.server_database[input_name]
+		if !ok {
+			log.Printf("DeleteUser : Couldn't find name in db")
+			c.IndentedJSON(http.StatusNotFound, ok)
+			return
+		}
+
+		log.Printf("Deleted User %s", input_name)
+		delete(s.server_database, input_name)
+		c.Status(http.StatusOK)
+	}
+}

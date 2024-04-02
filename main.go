@@ -13,6 +13,9 @@ func main() {
 	//DEFINE ROUTES
 	router.POST("/user/create", main_server.CreateUser())
 	router.GET("/user/search/:name", main_server.SearchUser())
+	// TODO: IMPLEMENT routers.DELETE
+	// NOTE: routers.GET Works fine but find out why DELETE Doesn't work
+	router.GET("/user/delete/:name", main_server.DeleteUser())
 
 	log.Fatal(router.Run(":8080"))
 }
